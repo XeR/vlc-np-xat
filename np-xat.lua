@@ -66,6 +66,11 @@ function input_changed()
 
 	vlc.msg.dbg("[np-xat] " .. status)
 
+	-- Not activated > do not send requests
+	if not activated then
+		return false
+	end
+
 	for chat,chatid in pairs(chats) do
 		vlc.msg.dbg("[np-xat] " .. chatid)
 		update(id, token, chatid, status)
